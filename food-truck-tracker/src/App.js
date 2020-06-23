@@ -7,12 +7,18 @@ import Login from './components/Login'
 import {Route} from'react-router-dom'
 import * as Yup from 'yup'
 import formSchema from './validation/formSchema'
+import axios from 'axios'
 
 
-const initialValues = {
+const initialValuesRegistraton = {
   userOrOperator: '',
   username: '',
   email: '',
+  password: ''
+}
+
+const initialLoginFormValues = {
+  username: '',
   password: ''
 }
 
@@ -30,7 +36,8 @@ function App() {
 
 
   
-  const [formValues, setFormValues] = useState(initialValues)
+  const [registrationFormValues, setRegistrationFormValues] = useState(initialValuesRegistraton)
+  const [loginFormValues, setLoginFormValues] = useState(initialLoginFormValues)
   const [user, setUser] = useState(initialUsers)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
 
@@ -61,7 +68,7 @@ function App() {
     })
 
 
-    setFormValues({
+    setRegistrationFormValues({
       ...formValues,
       [name]: value
     })
@@ -70,7 +77,13 @@ function App() {
   
   const onSubmit = evt => {
     evt.preventDefault()
+
+
+
+    
   }
+
+
 
   return (
     <div className="App">
@@ -81,7 +94,7 @@ function App() {
       <Home />
       </Route>
       <Route path='/join'>
-        <Join values={formValues} onChange={onChange} onSubmit={onSubmit} errors={formErrors} />
+        <Join values={registrationFormValues} onChange={onChange} onSubmit={onSubmit} errors={formErrors} />
       </Route>
       <Route path='/login'>
         <Login />
