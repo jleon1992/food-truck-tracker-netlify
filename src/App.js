@@ -69,7 +69,7 @@ function App() {
 
 
     setRegistrationFormValues({
-      ...formValues,
+      ...registrationFormValues,
       [name]: value
     })
     
